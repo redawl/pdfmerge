@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PdfMerge</class>
+ <widget class="QMainWindow" name="PdfMerge">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>PdfMerge</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QListWidget" name="pdfList">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>481</width>
+      <height>371</height>
+     </rect>
+    </property>
+    <property name="mouseTracking">
+     <bool>false</bool>
+    </property>
+    <property name="acceptDrops">
+     <bool>true</bool>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Drag pdfs here to merge&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="pdfListLabel">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>PDFs to Merge</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="mergeButton">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>440</y>
+      <width>80</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Merge</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="mergeFileName">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>410</y>
+      <width>371</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="addFilesButton">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>370</y>
+      <width>80</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Add PDFs</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="pdfListLabel_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>410</y>
+      <width>111</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Merged file name</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuPDF_Merge_Utility">
+    <property name="title">
+     <string>PDF Merge Utility</string>
+    </property>
+   </widget>
+   <addaction name="menuPDF_Merge_Utility"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
