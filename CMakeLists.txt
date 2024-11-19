@@ -12,6 +12,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
+find_library(PoDoFo libpodofo.so)
+
 set(PROJECT_SOURCES
         main.cpp
         pdfmerge.cpp
@@ -38,11 +40,13 @@ else()
     else()
         add_executable(pdfmerge
             ${PROJECT_SOURCES}
+            README.md
         )
     endif()
 endif()
 
 target_link_libraries(pdfmerge PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(pdfmerge PRIVATE "${PoDoFo}")
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an

@@ -20,15 +20,11 @@ public:
     ~PdfMerge();
 
 private slots:
-    void on_pdfList_entered(const QModelIndex &index);
-
     void on_addFilesButton_clicked();
 
     void on_mergeButton_clicked();
 
 private:
     Ui::PdfMerge *ui;
-    void dragEnterEvent(QDragEnterEvent *event);
-    void dropEvent(QDropEvent *event);
 };
 #endif // PDFMERGE_H

@@ -4,8 +4,9 @@
 #include <QMimeData>
 #include <QFileDialog>
 #include <QListWidget>
+#include <QListWidgetItem>
 #include <QAbstractItemView>
-#include <stdio.h>
+#include <podofo/podofo.h>
 
 PdfMerge::PdfMerge(QWidget *parent)
     : QMainWindow(parent)
@@ -20,23 +21,6 @@ PdfMerge::~PdfMerge()
     delete ui;
 }
 
-void PdfMerge::on_pdfList_entered(const QModelIndex &index)
-{
-}
-
-void PdfMerge::dragEnterEvent(QDragEnterEvent *event) {
-    if (event->mimeData()->hasFormat("*/*")) {
-        event->acceptProposedAction();
-    }
-}
-
-void PdfMerge::dropEvent(QDropEvent *event)
-{
-    QByteArray text = event->mimeData()->data("*/*");
-    printf("data: %s\n", text.data());
-    event->acceptProposedAction();
-}
-
 void PdfMerge::on_addFilesButton_clicked()
 {
     QStringList fileNames = QFileDialog::getOpenFileNames(this, tr("Add pdfs"), "", tr("Portable Document Format (*.pdf)"));
@@ -46,6 +30,18 @@ void PdfMerge::on_addFilesButton_clicked()
 
 void PdfMerge::on_mergeButton_clicked()
 {
+    const int count = ui->pdfList->count();
 
+    PoDoFo::PdfMemDocument mergedDoc;
+
+    for(int i = 0; i < count; i++){
+        const QListWidgetItem * item = ui->pdfList->item(i);
+        PoDoFo::PdfMemDocument doc;
+        doc.Load(item->text().toLatin1().data());
+        mergedDoc.GetPages().AppendDocumentPages(doc);
+    }
+
+    const char * mergedFileName = ui->mergeFileName->text().toLatin1().data();
+    mergedDoc.Save(mergedFileName);
 }
 
