@@ -29,13 +29,16 @@ jobs:
         include:
           - os: windows-latest
             c_compiler: cl
+            install_command: ""
             cpp_compiler: cl
           - os: ubuntu-latest
             c_compiler: gcc
             cpp_compiler: g++
+            install_command: "apt update && apt install libgl1-mesa-dev qt6-base-dev"
           - os: ubuntu-latest
             c_compiler: clang
             cpp_compiler: clang++
+            install_command: "apt update && apt install libgl1-mesa-dev qt6-base-dev"
         exclude:
           - os: windows-latest
             c_compiler: gcc
@@ -49,7 +52,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        vcpkg install qtbase podofo
+        "${{ matrix.install_command }}"
 
     - name: Set reusable strings
       # Turn repeated input strings (such as the build output directory) into step outputs. These step outputs can be used throughout the workflow file.
