@@ -16,7 +16,7 @@ class PdfMerge : public QMainWindow
     Q_OBJECT
 
 public:
-    PdfMerge(QWidget *parent = nullptr);
+    PdfMerge(int argc, char ** argv);
     ~PdfMerge();
 
 private slots:
@@ -24,7 +24,13 @@ private slots:
 
     void on_mergeButton_clicked();
 
+    void on_errorClose_clicked();
+
+    void on_abouteQtButton_clicked();
+
 private:
     Ui::PdfMerge *ui;
+
+    void showError (char * msg);
 };
 #endif // PDFMERGE_H

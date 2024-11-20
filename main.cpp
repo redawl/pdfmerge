@@ -5,7 +5,7 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    PdfMerge w;
+    PdfMerge w(argc, argv);
     w.show();
     return a.exec();
 }

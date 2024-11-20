@@ -82,7 +82,7 @@
      <string>Add PDFs</string>
     </property>
    </widget>
-   <widget class="QLabel" name="pdfListLabel_2">
+   <widget class="QLabel" name="mergeFileNameLabel">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -94,6 +94,57 @@
     <property name="text">
      <string>Merged file name</string>
     </property>
+   </widget>
+   <widget class="QPushButton" name="abouteQtButton">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>10</y>
+      <width>80</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>About Qt</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="errorMessage" native="true">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>110</y>
+      <width>491</width>
+      <height>171</height>
+     </rect>
+    </property>
+    <widget class="QPushButton" name="errorClose">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>140</y>
+       <width>80</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Close</string>
+     </property>
+    </widget>
+    <widget class="QTextBrowser" name="message">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>431</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
