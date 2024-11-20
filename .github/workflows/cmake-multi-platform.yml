@@ -52,7 +52,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        "${{ matrix.install_command }}"
+        ${{ matrix.install_command }}
 
     - name: Set reusable strings
       # Turn repeated input strings (such as the build output directory) into step outputs. These step outputs can be used throughout the workflow file.
