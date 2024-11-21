@@ -34,11 +34,11 @@ jobs:
           - os: ubuntu-latest
             c_compiler: gcc
             cpp_compiler: g++
-            install_command: "sudo apt update && sudo apt install libgl1-mesa-dev qt6-base-dev"
+            install_command: "sudo ./scripts/ci.sh"
           - os: ubuntu-latest
             c_compiler: clang
             cpp_compiler: clang++
-            install_command: "sudo apt update && sudo apt install libgl1-mesa-dev qt6-base-dev"
+            install_command: "sudo ./scripts/ci.sh"
         exclude:
           - os: windows-latest
             c_compiler: gcc
