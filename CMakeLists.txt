@@ -20,8 +20,10 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 endif()
 
 if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
-    message(WARNING "Looking for podofo.dll")
-    find_library(PoDoFo "C:/Program Files (x86)/PoDoFo/" podofo.dll)
+    message(WARNING "Looking for podofo")
+    find_library(PoDoFo
+        PATHS "C:/Program Files (x86)/PoDoFo/"
+        NAMES podofo)
 endif()
 
 set(PROJECT_SOURCES
