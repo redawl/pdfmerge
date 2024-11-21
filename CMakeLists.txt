@@ -15,10 +15,12 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+    message(WARNING "Looking for libpodofo.so")
     find_library(PoDoFo libpodofo.so)
 endif()
 
 if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+    message(WARNING "Looking for podofo.dll")
     find_library(PoDoFo "C:/Program Files (x86)/PoDoFo/" podofo.dll)
 endif()
 
