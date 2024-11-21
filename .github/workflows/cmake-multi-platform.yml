@@ -73,8 +73,8 @@ jobs:
         mkdir build
         cd build
         cmake -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg\scripts\buildsystems\vcpkg.cmake ..
-        make
-        make install
+        cmake --build . --config Release
+        cmake --install .
         
     - name: Set reusable strings
       # Turn repeated input strings (such as the build output directory) into step outputs. These step outputs can be used throughout the workflow file.
