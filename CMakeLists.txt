@@ -14,7 +14,7 @@ include_directories (${PROJECT_SOURCE_DIR})
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
-find_library(PoDoFo libpodofo.so)
+find_library(PoDoFo "C:/Program Files (x86)/PoDoFo/" libpodofo.so)
 
 set(PROJECT_SOURCES
         main.cpp
