@@ -60,7 +60,6 @@ jobs:
     - name: Install podofo (Windows)
       if: ${{ startsWith(matrix.os, 'windows-latest') }}
       run: | 
-        vcpkg install fontconfig freetype libxml2 openssl libjpeg-turbo libpng tiff zlib
         # create temp with zip extension (or Expand will complain)
         $tmp = New-TemporaryFile | Rename-Item -NewName { $_ -replace 'tmp$', 'zip' } –PassThru
         # download
@@ -70,9 +69,10 @@ jobs:
         # remove temporary file
         $tmp | Remove-Item
         cd podofo/podofo*
+        vcpkg install fontconfig freetype libxml2 openssl libjpeg-turbo libpng tiff zlib
         mkdir build
         cd build
-        cmake ..
+        cmake -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg\scripts\buildsystems\vcpkg.cmake ..
         make
         make install
         
