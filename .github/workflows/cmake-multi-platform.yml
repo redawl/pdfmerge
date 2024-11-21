@@ -58,7 +58,7 @@ jobs:
         ${{ matrix.install_command }}
 
     - name: Install podofo (Windows)
-      if: ${{ startsWith(matrix.os, windows-latest) }}
+      if: ${{ startsWith(matrix.os, 'windows-latest') }}
       run: | 
         vcpkg install fontconfig freetype libxml2 openssl libjpeg-turbo libpng tiff zlib
         # create temp with zip extension (or Expand will complain)
