@@ -50,6 +50,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v4
+
     - name: Install dependencies
       run: |
         ${{ matrix.install_command }}
