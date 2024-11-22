@@ -75,7 +75,7 @@ jobs:
         vcpkg install pkgconf fontconfig freetype libxml2 openssl libjpeg-turbo libpng tiff zlib
         mkdir build
         cd build
-        cmake -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg\scripts\buildsystems\vcpkg.cmake ..
+        cmake -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg\scripts\buildsystems\vcpkg.cmake -DPODOFO_BUILD_STATIC=TRUE ..
         cmake --build . --config Release
         cmake --install .
         
