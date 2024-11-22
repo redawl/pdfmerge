@@ -28,8 +28,8 @@ PdfMerge::PdfMerge(int argc, char ** argv)
 }
 
 void PdfMerge::showError (char * msg) {
-    char error[7+strlen(msg)];
-    sprintf(error, "Error: %s", msg);
+    char error[500];
+    snprintf(error, 500, "Error: %s", msg);
     ui->message->setText(error);
     ui->errorMessage->show();
 }
@@ -52,7 +52,7 @@ void PdfMerge::on_mergeButton_clicked()
 
     if (std::filesystem::exists(mergedFileName)) {
         char msg[500];
-        sprintf(msg, "%s already exists.", mergedFileName);
+        snprintf(msg, 500, "%s already exists.", mergedFileName);
         this->showError(msg);
     } else {
         const int count = ui->pdfList->count();
