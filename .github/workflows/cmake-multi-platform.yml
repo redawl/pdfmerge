@@ -29,7 +29,7 @@ jobs:
         include:
           - os: windows-latest
             c_compiler: cl
-            install_command: ""
+            install_command: "./scripts/ci.ps1"
             exe: "Release/pdfmerge.exe"
             cpp_compiler: cl
           - os: ubuntu-latest
@@ -57,29 +57,8 @@ jobs:
       uses: jurplel/install-qt-action@v4
 
     - name: Install dependencies
-      run: |
-        ${{ matrix.install_command }}
+      run: ${{ matrix.install_command }}
 
-    - name: Install podofo (Windows)
-      if: ${{ startsWith(matrix.os, 'windows-latest') }}
-      run: | 
-        # create temp with zip extension (or Expand will complain)
-        $tmp = New-TemporaryFile | Rename-Item -NewName { $_ -replace 'tmp$', 'zip' } –PassThru
-        # download
-        Invoke-WebRequest -OutFile $tmp https://github.com/podofo/podofo/archive/refs/tags/0.10.4.zip
-        # extract to same folder 
-        $tmp | Expand-Archive -DestinationPath podofo -Force
-        # remove temporary file
-        $tmp | Remove-Item
-        cd podofo/podofo*
-        vcpkg install pkgconf fontconfig freetype libxml2 openssl libjpeg-turbo libpng tiff zlib
-        mkdir build
-        cd build
-        # cmake -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg\scripts\buildsystems\vcpkg.cmake -DPODOFO_BUILD_STATIC=TRUE ..
-        cmake -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg\scripts\buildsystems\vcpkg.cmake ..
-        cmake --build . --config Release
-        cmake --install .
-        
     - name: Set reusable strings
       # Turn repeated input strings (such as the build output directory) into step outputs. These step outputs can be used throughout the workflow file.
       id: strings
