@@ -24,7 +24,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     find_library(PoDoFo
         NAMES podofo libpodofo
         REQUIRED
-        PATHS "C:/Program Files (x86)/PoDoFo/")
+        PATHS "C:/Program Files (x86)/PoDoFo/lib/")
 endif()
 
 set(PROJECT_SOURCES
