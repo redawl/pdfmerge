@@ -58,7 +58,7 @@ else()
 endif()
 
 target_link_libraries(pdfmerge PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
-target_link_libraries(pdfmerge PRIVATE "${PoDoFo}" "-static")
+target_link_libraries(pdfmerge PRIVATE "${PoDoFo}")
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an

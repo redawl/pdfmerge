@@ -14,6 +14,7 @@ wget "https://github.com/podofo/podofo/archive/refs/tags/0.10.4.zip" --output-do
 # Install podofo
 pushd "/tmp/podofo/podofo-0.10.4"
 mkdir build && cd build
-cmake -DPODOFO_BUILD_STATIC=TRUE ..
+# cmake -DPODOFO_BUILD_STATIC=TRUE ..
+cmake ..
 make
 sudo make install

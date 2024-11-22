@@ -55,8 +55,6 @@ jobs:
 
     - name: Install Qt
       uses: jurplel/install-qt-action@v4
-      with:
-        version: '6.7.*'
 
     - name: Install dependencies
       run: |
@@ -77,7 +75,8 @@ jobs:
         vcpkg install pkgconf fontconfig freetype libxml2 openssl libjpeg-turbo libpng tiff zlib
         mkdir build
         cd build
-        cmake -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg\scripts\buildsystems\vcpkg.cmake -DPODOFO_BUILD_STATIC=TRUE ..
+        # cmake -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg\scripts\buildsystems\vcpkg.cmake -DPODOFO_BUILD_STATIC=TRUE ..
+        cmake -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg\scripts\buildsystems\vcpkg.cmake ..
         cmake --build . --config Release
         cmake --install .
         
