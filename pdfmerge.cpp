@@ -50,7 +50,11 @@ void PdfMerge::on_addFilesButton_clicked()
 
 void PdfMerge::on_mergeButton_clicked()
 {
-    char * mergedFileName = ui->mergeFileName->text().toLatin1().data();
+    int mergedFileNameLength = strlen(ui->mergeFileName->text().toLatin1().data());
+    char * mergedFileName = (char *)malloc(mergedFileNameLength * sizeof(char));
+
+    strncpy(mergedFileName, ui->mergeFileName->text().toLatin1().data(), mergedFileNameLength);
+
     qInfo("Merging files ");
     if (std::filesystem::exists(mergedFileName)) {
         char msg[500];
@@ -72,6 +76,8 @@ void PdfMerge::on_mergeButton_clicked()
 
         mergedDoc.Save(mergedFileName);
     }
+
+    free(mergedFileName);
 }
 
 
