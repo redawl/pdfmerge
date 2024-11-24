@@ -57,6 +57,13 @@ jobs:
       uses: jurplel/install-qt-action@v4
 
     - name: Install dependencies
+      uses: uses: actions/cache@v4
+      with:
+        path: |
+            /usr/local/include/podofo/
+            C:/vcpkg/packages/
+            C:/Program Files (x86)/PoDoFo/
+        key: ${{ runner.os }}-podofo
       run: ${{ matrix.install_command }}
 
     - name: Set reusable strings
