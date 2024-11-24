@@ -7,7 +7,6 @@
 #include <QListWidgetItem>
 #include <QAbstractItemView>
 #include <podofo/podofo.h>
-#include <filesystem>
 #include <string.h>
 
 PdfMerge::PdfMerge(int argc, char ** argv)
@@ -43,24 +42,14 @@ PdfMerge::~PdfMerge()
 
 void PdfMerge::on_addFilesButton_clicked()
 {
-    QStringList fileNames = QFileDialog::getOpenFileNames(this, tr("Add pdfs"), "", tr("Portable Document Format (*.pdf)"));
+    QStringList fileNames = QFileDialog::getOpenFileNames(this, tr("Open"), "", tr("PDF Document (*.pdf)"));
     ui->pdfList->addItems(fileNames);
 }
 
 
 void PdfMerge::on_mergeButton_clicked()
 {
-    int mergedFileNameLength = ui->mergeFileName->text().toLatin1().size() + 1;
-    char * mergedFileName = (char *)malloc(mergedFileNameLength * sizeof(char));
-
-    strncpy(mergedFileName, ui->mergeFileName->text().toLatin1().data(), mergedFileNameLength);
-
     qInfo("Merging files ");
-    if (std::filesystem::exists(mergedFileName)) {
-        char msg[1000];
-        snprintf(msg, 1000, "%s already exists.", mergedFileName);
-        this->showError(msg);
-    } else {
         const int count = ui->pdfList->count();
 
         PoDoFo::PdfMemDocument mergedDoc;
@@ -72,12 +61,12 @@ void PdfMerge::on_mergeButton_clicked()
             doc.Load(item->text().toLatin1().data());
             mergedDoc.GetPages().AppendDocumentPages(doc);
         }
-        qInfo("Saving to %s\n", mergedFileName);
 
-        mergedDoc.Save(mergedFileName);
-    }
+        QString mergedFileName = QFileDialog::getSaveFileName(this, tr("Save as"), "merged.pdf", tr("PDF Document (*.pdf)"));
 
-    free(mergedFileName);
+        qInfo("Saving to %s\n", mergedFileName.toLatin1().constData());
+
+        mergedDoc.Save(mergedFileName.toLatin1().constData());
 }
 
 
