@@ -57,7 +57,7 @@ jobs:
       uses: jurplel/install-qt-action@v4
 
     - name: Install dependencies
-      uses: uses: actions/cache@v4
+      uses: actions/cache@v4
       with:
         path: |
             /usr/local/include/podofo/
