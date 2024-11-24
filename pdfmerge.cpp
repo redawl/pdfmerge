@@ -50,15 +50,15 @@ void PdfMerge::on_addFilesButton_clicked()
 
 void PdfMerge::on_mergeButton_clicked()
 {
-    int mergedFileNameLength = strlen(ui->mergeFileName->text().toLatin1().data());
+    int mergedFileNameLength = ui->mergeFileName->text().toLatin1().size() + 1;
     char * mergedFileName = (char *)malloc(mergedFileNameLength * sizeof(char));
 
     strncpy(mergedFileName, ui->mergeFileName->text().toLatin1().data(), mergedFileNameLength);
 
     qInfo("Merging files ");
     if (std::filesystem::exists(mergedFileName)) {
-        char msg[500];
-        snprintf(msg, 500, "%s already exists.", mergedFileName);
+        char msg[1000];
+        snprintf(msg, 1000, "%s already exists.", mergedFileName);
         this->showError(msg);
     } else {
         const int count = ui->pdfList->count();
