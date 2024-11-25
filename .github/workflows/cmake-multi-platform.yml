@@ -58,8 +58,8 @@ jobs:
     #       C:/Program Files (x86)/PoDoFo/
     #     key: ${{ runner.os }}-podofo
 
-    # - name: Install dependencies
-    #   run: ${{ matrix.install_command }}
+    - name: Install dependencies
+      run: ${{ matrix.install_command }}
 
     - name: Set reusable strings
       id: strings
