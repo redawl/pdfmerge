@@ -30,7 +30,7 @@ jobs:
           - os: windows-latest
             c_compiler: cl
             install_command: "./scripts/ci.ps1"
-            exe: "Release/pdfmerge.exe"
+            exe: "Release"
             cpp_compiler: cl
           - os: ubuntu-latest
             c_compiler: gcc
@@ -96,6 +96,7 @@ jobs:
       run: ctest --build-config ${{ matrix.build_type }}
 
     - name: Windeployqt
+      if: ${{ startsWith(matrix.os, 'windows-latest') }}
       run: windeployqt ${{ steps.strings.outputs.build-output-dir }}/${{ matrix.exe }}
 
     - name: Upload a Build Artifact
