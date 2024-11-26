@@ -48,10 +48,6 @@ jobs:
       with:
         submodules: true
 
-    - name: Find vcpkg cmake lol
-      run: |
-        find / -name 'vcpkg.cmake' -type f 2>/dev/null
-
     - name: Install Qt
       uses: jurplel/install-qt-action@v4
 
