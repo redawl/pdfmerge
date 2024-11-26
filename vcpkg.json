@@ -1,0 +1,12 @@
+{
+  "dependencies": [
+    "fontconfig",
+    "freetype",
+    "libxml2",
+    "openssl",
+    "libjpeg-turbo",
+    "libpng",
+    "tiff",
+    "zlib"
+  ]
+}
