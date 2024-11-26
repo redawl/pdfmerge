@@ -21,7 +21,7 @@ jobs:
           - os: windows-latest
             c_compiler: cl
             install_command: "./scripts/ci.ps1"
-            toolchain_file: "C:\vcpkg\scripts\buildsystems\vcpkg.cmake"
+            toolchain_file: "C:/vcpkg/scripts/buildsystems/vcpkg.cmake"
             exe: "Release"
             cpp_compiler: cl
           - os: ubuntu-latest
@@ -49,7 +49,8 @@ jobs:
         submodules: true
 
     - name: Find vcpkg cmake lol
-      run: find / -name 'vcpkg.cmake' -type f 2>/dev/null
+      run: |
+        find / -name 'vcpkg.cmake' -type f 2>/dev/null
 
     - name: Install Qt
       uses: jurplel/install-qt-action@v4
