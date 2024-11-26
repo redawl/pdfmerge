@@ -21,7 +21,7 @@ jobs:
           - os: windows-latest
             c_compiler: cl
             install_command: "./scripts/ci.ps1"
-            toolchain_arg: "-DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystemsvcpkg.cmake"
+            toolchain_arg: "-DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake"
             exe: "Release"
             cpp_compiler: cl
           - os: ubuntu-latest
