@@ -21,7 +21,7 @@ jobs:
           - os: windows-latest
             c_compiler: cl
             install_command: "./scripts/ci.ps1"
-            toolchain_file: "C:/vcpkg/scripts/buildsystems/vcpkg.cmake"
+            toolchain_arg: "-DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystemsvcpkg.cmake"
             exe: "Release"
             cpp_compiler: cl
           - os: ubuntu-latest
@@ -70,7 +70,7 @@ jobs:
         -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
         -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
         -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
-        -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg\scripts\buildsystems\vcpkg.cmake
+        ${{ matrix.toolchain_arg }}
         -S ${{ github.workspace }}
 
     - name: Build
